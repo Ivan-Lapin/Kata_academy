@@ -62,19 +62,27 @@ Start:
 		if err2 != nil {
 			log.Fatal("Ошибка преобразования второго числа:", err2)
 		}
-
+		if x < 0 || x > 10 || y < 0 || y > 10 {
+			fmt.Println("Неправельный ввод")
+			fmt.Println()
+			goto Start
+		}
 		switch slice[1] {
 		case "+":
 			fmt.Println(x + y)
 		case "-":
-			fmt.Println(x - y)
+			if x >= y {
+				fmt.Println(x - y)
+			} else {
+				fmt.Println("В данном калькуляторе не предусмотрены отрицательные числа")
+			}
 		case "*":
 			fmt.Println(x * y)
 		case "/":
 			if y == 0 {
 				fmt.Println("Ошибка: деление на ноль.")
 			} else {
-				fmt.Println(x / y)
+				fmt.Println(float64(x) / float64(y))
 			}
 		default:
 			fmt.Println("Неизвестный оператор")
@@ -87,7 +95,7 @@ Start:
 			if xi >= yi {
 				fmt.Println(xi - yi)
 			} else {
-				fmt.Println("Ошибка: результат отрицательный для римских чисел.")
+				fmt.Println("В данном калькуляторе не предусмотрены отрицательные числа")
 			}
 		case "*":
 			fmt.Println(xi * yi)
@@ -95,7 +103,7 @@ Start:
 			if yi == 0 {
 				fmt.Println("Ошибка: деление на ноль.")
 			} else {
-				fmt.Println(xi / yi)
+				fmt.Println(float64(xi) / float64(yi))
 			}
 		default:
 			fmt.Println("Неизвестный оператор")

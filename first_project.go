@@ -23,6 +23,16 @@ func main() {
 	desert["VIII"] = 8
 	desert["IX"] = 9
 	desert["X"] = 10
+	desert["XI"] = 11
+	desert["XII"] = 12
+	desert["XIII"] = 13
+	desert["XIV"] = 14
+	desert["XV"] = 15
+	desert["XVI"] = 16
+	desert["XVII"] = 17
+	desert["XVIII"] = 18
+	desert["IXX"] = 19
+	desert["XX"] = 20
 
 Start:
 	fmt.Println("Введите выражение (через пробел) с помощью арабских или римских чисел (от 1 до 10) с операцией(+, -, /, *) ")
@@ -73,8 +83,6 @@ Start:
 		case "-":
 			if x >= y {
 				fmt.Println(x - y)
-			} else {
-				fmt.Println("В данном калькуляторе не предусмотрены отрицательные числа")
 			}
 		case "*":
 			fmt.Println(x * y)
@@ -88,25 +96,32 @@ Start:
 			fmt.Println("Неизвестный оператор")
 		}
 	} else {
+		result := 0
 		switch slice[1] {
 		case "+":
-			fmt.Println(xi + yi)
+			result = xi + yi
 		case "-":
 			if xi >= yi {
-				fmt.Println(xi - yi)
+				result = xi - yi
 			} else {
 				fmt.Println("В данном калькуляторе не предусмотрены отрицательные числа")
 			}
 		case "*":
-			fmt.Println(xi * yi)
+			result = xi * yi
 		case "/":
 			if yi == 0 {
 				fmt.Println("Ошибка: деление на ноль.")
 			} else {
-				fmt.Println(float64(xi) / float64(yi))
+				result = xi / yi
 			}
 		default:
 			fmt.Println("Неизвестный оператор")
+		}
+		for key, val := range desert {
+			if val == result {
+				fmt.Println(key)
+				break
+			}
 		}
 	}
 }
